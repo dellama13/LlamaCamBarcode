@@ -76,19 +76,21 @@ namespace LlamaCamBarcode
                     LlamaFrame.Source = bi;
                     if(LlamaFrame.Source != null)
                     {
-                        Result barcodeResult = LlamaBarcodeReader.Decode((BitmapSource)LlamaFrame.Source);
-                        TextResults.Text = barcodeResult?.Text;
+                        LlamaBarcodeReader.Decode((BitmapSource)LlamaFrame.Source);
+                        
 
                     }
                     
                 }));
+
+              
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
 
             }
-
+            
         }
 
         private void TryDecode()
