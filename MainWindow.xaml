@@ -5,11 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LlamaCamBarcode"
         mc:Ignorable="d" 
-        Title="MainWindow" Height="450" Width="800">
-    <StackPanel HorizontalAlignment="Center">
-    
-    <StackPanel Orientation="Horizontal">
-        <Border x:Name="FrameBrd" Height="240" Width="160"
+        Title="LlamaBarcodeCam" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+       
+        <Border x:Name="FrameBrd" Height="200" Width="160"
+                Grid.Column="1" Grid.Row="0"
+                Grid.RowSpan="2"
                 BorderBrush="Black" BorderThickness="2">
             <Image x:Name="LlamaFrame" Stretch="Fill"
                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
@@ -17,23 +30,41 @@
 
 
         </Border>
-
-        <Border x:Name="ResultsBrd" Height="175" Width="200"
-                HorizontalAlignment="Center" VerticalAlignment="Center"
-               
+        <TextBox x:Name="BarcodeLbl" Grid.Row="2" Grid.Column="1" Margin="0,0,0,0" IsEnabled="False"
+                   Width="95" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                   HorizontalContentAlignment="Left"
+                >Barcode Results:</TextBox>
+        <Border x:Name="ResultsBrd" Width="100" Height="25" Margin="25,0,0,0" 
+                Grid.Column="1" Grid.Row="2" 
+                 VerticalAlignment="Top" HorizontalAlignment="Center"
                 BorderBrush="Black" BorderThickness="2">
 
-                <TextBlock TextAlignment="Center" VerticalAlignment="Center" x:Name="TextResults">PlaceHolder</TextBlock>
+            <TextBlock TextAlignment="Center" IsEnabled="False" x:Name="TextResults">PlaceHolder</TextBlock>
             
         </Border>
 
+        <TextBox x:Name="CameraLbl" Grid.Row="2" Grid.Column="1" Margin="0,0,0,0" IsEnabled="False"
+                   Width="95" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                   HorizontalContentAlignment="Left"
+                >Camera Status:</TextBox>
 
-      
-        </StackPanel>
+        <Border Width="100" Height="25" Margin="25,0,0,0" 
+                Grid.Column="1" Grid.Row="2" 
+                 VerticalAlignment="Center" HorizontalAlignment="Center"
+                BorderBrush="Black" BorderThickness="2">
+
+            <TextBlock TextAlignment="Center" VerticalAlignment="Center" IsEnabled="False"
+                           x:Name="CameraStatus">PlaceHolder</TextBlock>
+
+            </Border>
+
+
+       
 
 
 
-        <StackPanel Orientation="Horizontal" >
+        <StackPanel Grid.Row="3" Grid.Column="1"
+            Orientation="Horizontal" >
             <Button x:Name="StartCambtn" Click="StartCam"
                     Margin="7.5"
                     Width="120" Height="55" Content="Start">
@@ -48,7 +79,7 @@
 
         </StackPanel>
 
-    </StackPanel>
 
 
+    </Grid>
 </Window>

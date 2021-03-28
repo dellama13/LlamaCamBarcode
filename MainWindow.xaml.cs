@@ -29,10 +29,11 @@ namespace LlamaCamBarcode
     public partial class MainWindow : Window
     {
 
-        VideoCaptureDevice LlamaCam;
+
+        public static VideoCaptureDevice LlamaCam;
         public FilterInfoCollection LlamaCamCollection;
         ZXing.Presentation.BarcodeReader LlamaBarcodeReader = new ZXing.Presentation.BarcodeReader();
-
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -42,8 +43,17 @@ namespace LlamaCamBarcode
 
         }
 
+       private string CameraRunning()
+        {
+            var status = LlamaCam.IsRunning;
+            return status.ToString();
+
+        }
+
         private void LlamaBarcodeReader_ResultFound(Result obj)
         {
+            LlamaCam.Stop();
+            
             Dispatcher.BeginInvoke(new ThreadStart(delegate
             {
                 
@@ -107,7 +117,7 @@ namespace LlamaCamBarcode
         {
 
             LlamaCam.Start();
-
+            CameraStatus.Text = CameraRunning();
         }
 
         private void StopCam(object sender, RoutedEventArgs e)
@@ -115,6 +125,7 @@ namespace LlamaCamBarcode
 
 
             LlamaCam.Stop();
+            CameraStatus.Text = CameraRunning();
         }
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
