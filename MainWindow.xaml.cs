@@ -47,7 +47,7 @@ namespace LlamaCamBarcode
         {
             var status = LlamaCam.IsRunning;
             return status.ToString();
-
+ 
         }
 
         private void LlamaBarcodeReader_ResultFound(Result obj)
